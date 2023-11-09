@@ -1,0 +1,197 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{relsize}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage[none]{hyphenat}
+\usepackage{enumitem}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{minted}
+\DeclareMathOperator{\arctg}{arctg}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+
+\urlstyle{same}
+
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=C,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\Large\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+
+\usepackage[english]{babel}
+
+\usepackage{minted}
+
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+        \includegraphics[scale=0.9]{DU-log.png} \\[12pt]
+        
+        \huge \textbf{University of Dhaka}
+        \begin{center}
+           { \LARGE \textbf{Department of Computer Science and Engineering \\[8pt]}}
+           
+             {\textbf{ \LARGE CSE-3113 : Microprocessor and Assembly Language Lab\\[8pt]}}
+                        
+             \begin{LARGE}
+                    \textbf{ \LARGE Lab 3\\[8pt]}
+        		\textbf{Submitted By:\\[8pt]}
+                         Nazira Jesmin Lina, Roll: 55\\[8pt]
+
+        		\textbf{Submitted On : \\[8pt]}
+        			January 31, 2023\\[10pt]
+        		\textbf{Submitted To :\\[8pt]}
+        			Dr. Upama Kabir\\[8pt]
+                        Dr. Md. Mustafizur Rahman\\[8pt]
+                    
+	       \end{LARGE}
+             
+        \end{center}
+    \end{center}
+\end{titlepage}
+
+\section{Objectives}
+   The objective this lab is to teach The basics of low-level programming and computer architecture and the use of assembly language to write simple programs that interact with computer hardware.
+\section{Lab Questions}
+\subsection{Problem 1}
+Write a simple program to calculate: P = Q + R + S. Let Q = 2, R = 4, S = 5. Assume that r1
+= Q, r2 = R, r3 = S. The result P will go in r0.
+
+\begin{listing}[h]
+    \caption{Adding 3 Numbers}
+    \begin{minted}[linenos,frame=single]{nasm}
+    AREA lABprob, CODE, READONLY
+    ENTRY
+    EXPORT main
+main 
+	MOV r1, #2
+	MOV r2, #4
+	MOV r3, #5
+	ADD r0,r1,r2
+	ADD r0,r0,r3
+STOP B STOP
+    END
+\end{minted}
+\end{listing}
+
+
+\subsection{Problem 2}
+Write a simple program to calculate: P = Q - R . Assume that r1 = Q, r2 = R, and Q¿R. The
+result P will go in r0
+
+\begin{listing}[h]
+    \caption{Subtracting 2 Numbers}
+    \begin{minted}[linenos,frame=single]{nasm}
+    AREA lABprob, CODE, READONLY
+    ENTRY
+    EXPORT PROB2
+PROB2
+	MOV r1, #8
+	MOV r2, #4
+	SUB r0,r1,r2
+STOP B STOP
+    END
+\end{minted}
+\end{listing}
+
+\subsection{Problem 3}
+Write a simple program to calculate: P = Q - R- S. Let Q = 12, R = 4, S = 5. Assume that r1 =
+Q, r2 = R, r3 = S. The result P will go in r0.
+
+\begin{listing}[h]
+    \caption{Subtracting 3 Numbers}
+    \begin{minted}[linenos,frame=single]{nasm}
+    AREA lABprob, CODE, READONLY
+    ENTRY
+    EXPORT PROB3
+PROB3
+	MOV r1, #12
+	MOV r2, #4
+	MOV r3, #5
+	SUB r0,r1,r2
+	SUB r0,r0,r3
+STOP B STOP
+    END
+\end{minted}
+\end{listing}
+
+\subsection{Problem 4}
+Write a simple program to calculate: P = Q x R . The result P will go in r0.
+
+\begin{listing}[h]
+    \caption{multiplying 2 Numbers}
+    \begin{minted}[linenos,frame=single]{nasm}
+    AREA lABprob, CODE, READONLY
+    ENTRY
+    EXPORT PROB4
+PROB4
+	MOV r1, #8
+	MOV r2, #4
+	MUL r0,r1,r2
+STOP B STOP
+    END
+\end{minted}
+\end{listing}
+\newpage
+\subsection{Problem 5}
+This problem is same as the problem 1. W = X + Y + Z . Once again, let X = 9, Y = 8, Z = 5
+and we assume that r4 = X, r3 = Y, r2 = Z. In this case, you will put the data in memory in the
+form of constants before the program runs.
+
+\begin{listing}[h]
+    \caption{adding 3 Numbers}
+    \begin{minted}[linenos,frame=single]{nasm}
+    AREA lABprob, CODE, READONLY
+    ENTRY
+    EXPORT PROB5
+X EQU 9
+Y EQU 8
+Z EQU 5
+PROB5
+	MOV r4, #X
+	MOV r3, #Y
+	MOV r2, #Z
+	ADD r0,r3,r4
+	ADD r0,r0,r2
+STOP B STOP
+    END
+\end{minted}
+\end{listing}
+
+
+\nocite{*}
+\end{document}
